@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import AuthorByline from './AuthorByline'
 
 interface FAQ {
   question: string
@@ -59,7 +60,9 @@ export default function EditorialTemplate({
           <h1 className="font-serif font-bold text-3xl sm:text-4xl text-deepForest mb-4 leading-tight">
             {title}
           </h1>
-          <p className="text-lg text-sage leading-relaxed mb-6">{description}</p>
+          <p className="text-lg text-sage leading-relaxed mb-4">{description}</p>
+
+          <AuthorByline />
 
           <div className="relative w-full aspect-video rounded-xl overflow-hidden">
             <Image

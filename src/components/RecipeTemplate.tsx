@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import NutritionTable from './NutritionTable'
+import AuthorByline from './AuthorByline'
 
 interface RecipeMeta {
   prepTime: string
@@ -83,6 +84,8 @@ export default function RecipeTemplate({
             {title}
           </h1>
           <p className="text-sage text-lg leading-relaxed mb-4">{description}</p>
+
+          <AuthorByline />
 
           <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6">
             <Image

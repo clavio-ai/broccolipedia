@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import AuthorByline from './AuthorByline'
 
 interface HubCard {
   title: string
@@ -60,7 +61,8 @@ export default function HubTemplate({
         <h1 className="font-serif font-bold text-3xl sm:text-4xl text-deepForest mb-4 leading-tight">
           {title}
         </h1>
-        <p className="text-lg text-sage leading-relaxed max-w-2xl mb-6">{description}</p>
+        <p className="text-lg text-sage leading-relaxed max-w-2xl mb-4">{description}</p>
+        <AuthorByline />
 
         <div className="relative w-full aspect-[21/9] rounded-xl overflow-hidden mb-6">
           <Image
