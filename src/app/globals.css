@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Raleway:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Raleway', sans-serif;
+  --color-primary: #15803D;
+  --color-primary-light: #22C55E;
+  --color-cta: #4ADE80;
+  --color-text: #14532D;
+  --color-muted: #4B7A53;
+  --color-border: #DCFCE7;
+  --color-surface: #ffffff;
+  --nav-height: 64px;
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Raleway', system-ui, sans-serif;
+  --shadow-soft: 0 2px 8px rgba(21, 128, 61, 0.08);
+  --shadow-card: 0 8px 24px rgba(21, 128, 61, 0.15);
+}
+
+body {
+  background: #ffffff;
+  color: #14532D;
+  font-family: 'Raleway', system-ui, sans-serif;
+}
+
+.article-body {
+  max-width: 68ch;
+  line-height: 1.75;
+  color: #14532D;
+}
+
+.article-body h2 {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #14532D;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.article-body h3 {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #15803D;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.article-body p {
+  margin-bottom: 1rem;
+}
+
+.article-body ul, .article-body ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.article-body li {
+  margin-bottom: 0.375rem;
+}
+
+/* Ingredient checkbox — CSS-only, no JS */
+.ingredient-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ingredient-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #15803D;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 2px;
+  position: relative;
+  transition: background 150ms, border-color 150ms;
+}
+
+.ingredient-item input[type="checkbox"]:checked {
+  background: #15803D;
+  border-color: #15803D;
+}
+
+.ingredient-item input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 8px;
+  height: 12px;
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.ingredient-item input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  color: #4B7A53;
+}
+
+/* Fact block */
+.fact-block {
+  background: #DCFCE7;
+  border-left: 4px solid #15803D;
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+/* Pull quote */
+.pull-quote {
+  border-left: 4px solid #4ADE80;
+  padding: 0.75rem 1.25rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #14532D;
+  margin: 1.5rem 0;
+}
+
+/* Key takeaways */
+.key-takeaways {
+  background: #DCFCE7;
+  border: 1px solid #22C55E;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Nutrition table */
+.nutrition-table {
+  border: 2px solid #14532D;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Raleway', sans-serif;
+  max-width: 360px;
+}
+
+.nutrition-table-header {
+  background: #14532D;
+  color: white;
+  padding: 1rem;
+}
+
+.nutrition-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.375rem 1rem;
+  border-bottom: 1px solid #DCFCE7;
+  font-size: 0.9rem;
+}
+
+.nutrition-row:last-child {
+  border-bottom: none;
+}
+
+.nutrition-row.bold {
+  font-weight: 700;
+  font-size: 1rem;
+}
