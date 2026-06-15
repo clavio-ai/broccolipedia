@@ -88,6 +88,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // AEO additions
     { url: `${base}/glossary`, lastModified: date, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${base}/what-is-broccoli`, lastModified: date, priority: 0.9, changeFrequency: 'monthly' },
+
+    // About
+    { url: `${base}/about`, lastModified: date, priority: 0.7, changeFrequency: 'yearly' },
   ]
 
   return pages
