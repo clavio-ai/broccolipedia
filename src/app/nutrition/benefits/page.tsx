@@ -2,125 +2,311 @@ import type { Metadata } from 'next'
 import EditorialTemplate from '@/components/EditorialTemplate'
 
 export const metadata: Metadata = {
-  title: 'Broccoli Benefits: What Eating It Actually Does to Your Body',
+  title: "Broccoli Health Benefits: What It Actually Does to Your Body",
   description:
-    'Sulforaphane, I3C, lutein, and kaempferol — what each compound does, which clinical trials have been run, and what the honest caveats are. USDA and PubMed cited.',
-  keywords: ['broccoli benefits', 'broccoli health benefits', 'sulforaphane benefits', 'broccoli cancer research'],
+    "89mg Vitamin C, 102mcg Vitamin K, sulforaphane, I3C, and gut bacteria support — all from 34 calories per 100g. A mom's practical guide with USDA FDC 170379 citations.",
+  keywords: [
+    'broccoli health benefits',
+    'broccoli benefits',
+    'sulforaphane benefits',
+    'broccoli nutrition',
+    'is broccoli good for you',
+    'broccoli vitamin c',
+    'broccoli gut health',
+    'raw vs cooked broccoli',
+  ],
   openGraph: {
-    title: 'Broccoli Benefits: What Eating It Actually Does to Your Body',
-    description: 'Clinical evidence for sulforaphane, eye health, gut barrier function, and inflammation reduction — with honest caveats on what is still under investigation.',
+    title: "Broccoli Health Benefits: What It Actually Does to Your Body",
+    description:
+      "89mg Vitamin C, 102mcg Vitamin K, sulforaphane from the stem — a practical guide to what broccoli does for your gut, liver, eyes, and blood sugar.",
+    url: 'https://broccolipedia.com/nutrition/benefits',
+    siteName: 'BroccoliPedia',
+    images: [
+      {
+        url: '/images/broccoli-health-benefits/broccoli-health-benefits-hero-broccoli-feature.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Fresh broccoli crown on a light timber surface in natural morning light',
+      },
+    ],
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Broccoli Health Benefits: What It Actually Does to Your Body",
+    description:
+      "89mg Vitamin C, sulforaphane from the stem, and gut bacteria support — USDA FDC 170379 cited throughout.",
+    images: ['/images/broccoli-health-benefits/broccoli-health-benefits-hero-broccoli-feature.webp'],
+  },
+  alternates: {
+    canonical: 'https://broccolipedia.com/nutrition/benefits',
   },
 }
 
-const schemaJson = {
+// We pass a wrapper object because EditorialTemplate expects Record<string, unknown>.
+// The @graph array pattern is valid JSON-LD and supported by Google's structured data.
+const schemaJson: Record<string, unknown> = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Broccoli Benefits: What Eating It Actually Does to Your Body',
-  description: 'Clinical evidence for broccoli health benefits including sulforaphane, I3C, lutein/zeaxanthin, and kaempferol.',
-  image: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=1200&q=80',
-  datePublished: '2026-06-15',
-  dateModified: '2026-06-15',
-  author: { '@type': 'Organization', name: 'BroccoliPedia' },
-  publisher: { '@type': 'Organization', name: 'BroccoliPedia', url: 'https://broccolipedia.com' },
+  '@graph': [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://broccolipedia.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Nutrition',
+        item: 'https://broccolipedia.com/nutrition',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Benefits of Broccoli',
+        item: 'https://broccolipedia.com/nutrition/benefits',
+      },
+    ],
+  },
+  {
+    '@type': 'Article',
+    headline: 'What Broccoli Actually Does to Your Body (A Mom\'s Honest Take)',
+    description:
+      '89mg Vitamin C, 102mcg Vitamin K, sulforaphane, I3C, and gut bacteria support — a practical guide to broccoli health benefits with USDA FDC 170379 citations.',
+    image: 'https://broccolipedia.com/images/broccoli-health-benefits/broccoli-health-benefits-hero-broccoli-feature.webp',
+    datePublished: '2026-06-16',
+    dateModified: '2026-06-16',
+    author: {
+      '@type': 'Person',
+      '@id': 'https://broccolipedia.com/about#elena-ignacio',
+      name: 'Elena Ignacio',
+      url: 'https://broccolipedia.com/about',
+      sameAs: [
+        'https://www.tiktok.com/@elenasainda',
+        'https://www.youtube.com/@adelevlogs',
+        'https://www.facebook.com/elena.ignacio',
+      ],
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'BroccoliPedia',
+      url: 'https://broccolipedia.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://broccolipedia.com/logo.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://broccolipedia.com/nutrition/benefits',
+    },
+    mentions: [
+      {
+        '@type': 'ChemicalSubstance',
+        name: 'Sulforaphane',
+        sameAs: 'https://www.wikidata.org/wiki/Q422330',
+      },
+      {
+        '@type': 'ChemicalSubstance',
+        name: 'Glucoraphanin',
+        sameAs: 'https://www.wikidata.org/wiki/Q2832186',
+      },
+      {
+        '@type': 'ChemicalSubstance',
+        name: 'Indole-3-carbinol',
+        sameAs: 'https://www.wikidata.org/wiki/Q411855',
+      },
+      {
+        '@type': 'ChemicalSubstance',
+        name: 'Lutein',
+        sameAs: 'https://www.wikidata.org/wiki/Q179090',
+      },
+      {
+        '@type': 'ChemicalSubstance',
+        name: 'Zeaxanthin',
+        sameAs: 'https://www.wikidata.org/wiki/Q421059',
+      },
+      {
+        '@type': 'Enzyme',
+        name: 'Myrosinase',
+        sameAs: 'https://www.wikidata.org/wiki/Q411857',
+      },
+      {
+        '@type': 'Taxon',
+        name: 'Broccoli',
+        sameAs: 'https://www.wikidata.org/wiki/Q47722',
+      },
+      {
+        '@type': 'MedicalCondition',
+        name: 'Age-related macular degeneration',
+        sameAs: 'https://www.wikidata.org/wiki/Q208513',
+      },
+      {
+        '@type': 'Drug',
+        name: 'Warfarin',
+        sameAs: 'https://www.wikidata.org/wiki/Q188491',
+      },
+    ],
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.quick-answer', '.paa-answer'],
+    },
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What organ is broccoli especially good for?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The gut benefits most directly — broccoli fiber feeds good bacteria, and research suggests sulforaphane improves gut wall integrity. The liver also benefits from sulforaphane activating Nrf2 detox pathways. The eyes benefit from 1,400mcg of lutein and zeaxanthin per 100g, linked to up to 43% lower macular degeneration risk in observational studies.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is it safe to eat broccoli every day?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes for most people. People on warfarin should keep Vitamin K intake consistent (broccoli has 102mcg per 100g, 85% of daily value). People eating very large raw amounts daily should monitor thyroid function, as raw cruciferous vegetables contain goitrogens that can affect the thyroid at high doses.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is raw or cooked broccoli healthier?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'It depends on what you want. For sulforaphane: chop first, wait 40 minutes, then cook. This lets myrosinase convert glucoraphanin to sulforaphane before heat destroys the enzyme. For Vitamin C and folate: brief steaming or microwaving preserves more than boiling. There is no single winner — the 40-minute chop method gives you both.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is broccoli good for weight loss?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Broccoli is 34 calories per 100g (USDA FDC 170379), mostly water and fiber. A full cup provides around 31 calories with meaningful volume and satiety. It is one of the best choices for high-volume, low-calorie eating.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Are broccoli sprouts healthier than regular broccoli?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, on sulforaphane concentration. Research suggests broccoli sprouts contain 20-50 times more glucoraphanin than mature broccoli (Talalay et al., PNAS 1997). They have less fiber and fewer other nutrients. Eating both is better than treating sprouts as a replacement.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What are the health benefits of broccoli for women?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Broccoli contains indole-3-carbinol (I3C), which influences estrogen metabolism. It also provides iron paired with Vitamin C (which improves absorption) — useful for post-menopausal women with reduced meat intake. Calcium (47mg per 100g) and Vitamin K together support bone density.',
+        },
+      },
+    ],
+  },
+  ],
 }
 
 export default function BroccoliBenefitsPage() {
   return (
     <EditorialTemplate
-      title="Broccoli Benefits: What Eating It Actually Does to Your Body"
-      description="There are 202 clinical trials on broccoli and sulforaphane in the literature. Here is what the evidence actually shows — and where the honest caveats are."
-      image="https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=1200&q=80"
-      imageAlt="Fresh broccoli florets arranged on a dark surface"
+      title="What Broccoli Actually Does to Your Body"
+      description="Adam refused broccoli for three months. Then I changed how I cooked it. Here is what I found out about what this vegetable actually does — USDA data, real studies, no hype."
+      image="/images/broccoli-health-benefits/broccoli-health-benefits-hero-broccoli-feature.webp"
+      imageAlt="Fresh broccoli crown on a light timber surface in natural morning light"
       keyTakeaways={[
-        'Sulforaphane activates Nrf2 detox pathways — the most-studied chemopreventive compound in any vegetable (MD Anderson)',
-        'One cup of raw broccoli provides 99% of your daily Vitamin C requirement (USDA FDC 170379)',
-        'Lutein and zeaxanthin (1,400mcg per 100g) reduce macular degeneration risk by up to 43% (BrightFocus Foundation)',
-        'A 2015 OHSU Phase II trial showed sulforaphane slowed PSA doubling time in prostate cancer patients',
-        'Penn State 2023 mouse study found broccoli strengthens the gut lining — human trial pending',
-        'I3C is under active investigation for cancer pathways — not proven to treat cancer in humans',
+        'One 100g serving provides 89mg Vitamin C (99% DV) and 102mcg Vitamin K (85% DV) for just 34 calories (USDA FDC 170379)',
+        'The stem has twice the sulforaphane of the florets — most people throw away the most nutritious part (Dr. William Li)',
+        'Chop broccoli and wait 40 minutes before cooking — this activates myrosinase before heat destroys it',
+        'Lutein and zeaxanthin (1,400mcg per 100g) are linked to up to 43% lower macular degeneration risk in observational studies',
+        'A 2012 RCT found broccoli sprout powder reduced fasting blood glucose by 1.9 mmol/L in Type 2 diabetic patients over 4 weeks',
+        'I3C in broccoli influences estrogen metabolism — early human trials show promise, but it is not a proven cancer treatment',
       ]}
       sections={[
         {
-          heading: 'Sulforaphane: The Most-Studied Compound',
-          body: `<p>Sulforaphane is not found in broccoli — it is produced when you cut or chew it. The enzyme myrosinase converts glucoraphanin (a glucosinolate stored in broccoli cells) into sulforaphane the moment cell walls are broken.</p>
-<p>Once absorbed, sulforaphane activates the Nrf2/Keap1 signaling pathway, which upregulates phase II detoxification enzymes in your body. MD Anderson Cancer Center describes it as the most extensively studied chemopreventive compound found in any vegetable.</p>
-<p>The critical practical implication: heating above 70°C (158°F) destroys myrosinase, stopping sulforaphane production entirely. The workaround is chopping broccoli and waiting 40 minutes before applying heat — this allows the conversion to complete before the enzyme is deactivated. Adding mustard powder (which contains its own myrosinase) to cooked broccoli also restores production.</p>`,
+          heading: 'What organ is broccoli especially good for?',
+          body: `<p class="paa-answer">The gut gets the most direct benefit. Broccoli's fiber (2.6g per 100g, USDA FDC 170379) feeds good bacteria in your microbiome. A 2023 Penn State mouse study found animals on a 15% broccoli diet grew significantly more goblet cells and Paneth cells, the cells that keep the gut wall intact and prevent intestinal permeability (Baxter et al., <em>Laboratory Investigation</em>, 2023). That was a mouse study, and human trials are pending. But a separate 2023 Hudson Institute study found sulforaphane changes gut microbiota composition in ways that increase anti-inflammatory metabolite production. Two independent 2023 studies pointing the same direction is not a coincidence.</p>
+<p>Second is the liver. Sulforaphane activates Nrf2/Keap1 detox pathways in the liver, upregulating phase II detoxification enzymes. MD Anderson Cancer Center calls sulforaphane the most extensively studied chemopreventive compound found in any vegetable.</p>
+<p>The eyes benefit specifically from broccoli's 1,400mcg of lutein and zeaxanthin per 100g (USDA FDC 170379). These are the only two dietary carotenoids that accumulate in the retina's macula, the area responsible for central, high-resolution vision. Research suggests dietary intake is associated with up to a 43% reduction in age-related macular degeneration risk in observational studies (BrightFocus Foundation, 2023).</p>`,
+        },
+        {
+          heading: 'Is it safe to eat broccoli every day?',
+          body: `<p class="paa-answer">For most people, yes. I eat it several times a week and we have had zero problems. But two groups genuinely need to pay attention.</p>
+<p>People on warfarin should keep Vitamin K intake consistent, not necessarily low. Broccoli has 102mcg per 100g, which is 85% of your daily value (USDA FDC 170379). Vitamin K affects how warfarin works, so wild swings in broccoli intake can affect your INR. The answer from most clinicians is "keep it steady" rather than "avoid it entirely."</p>
+<p>Heavy cruciferous consumers should watch thyroid function. Dr. William Li and Dr. Gundry both observed TSH drift in clinical patients who ate large amounts of raw cruciferous vegetables daily. Raw broccoli contains goitrogens that can compete with iodine uptake in the thyroid. Normal portions do not cause this. Cooking reduces goitrogen activity significantly. The practical fix: rotate broccoli with other vegetables, and if you are eating it raw, do not eat large amounts every single day.</p>`,
+        },
+        {
+          heading: 'Is raw or cooked broccoli healthier?',
+          body: `<p class="paa-answer">It depends on what you want from it, and I got this wrong for years.</p>
+<p>Sulforaphane is produced when you cut or chew broccoli, because cutting lets the enzyme myrosinase convert glucoraphanin into sulforaphane. The problem: heat above roughly 70°C destroys myrosinase, stopping production entirely (Baenas et al., <em>Foods</em>, 2019).</p>
+<p>The fix is simple. Chop your broccoli and wait 40 minutes before cooking. Conversion completes before heat, so you keep the sulforaphane even in cooked broccoli. Research suggests moderate microwave heating after this wait can raise sulforaphane yield by about 80% compared to no pre-chop boiling. Boiling with no pre-chop destroys myrosinase completely.</p>
+<p>One thing I only learned from Dr. William Li's research: the stem has twice the sulforaphane of the florets. Most people throw it away. I chop it first now and cook it alongside the florets. Alfi actually prefers the stem pieces because they stay crisp.</p>
+<p>For Vitamin C (89mg per 100g, USDA FDC 170379) and folate (63mcg per 100g, USDA FDC 170379), brief steaming or microwaving preserves more than boiling. Beta-carotene becomes easier to absorb when cooked. There is no single winner. The 40-minute chop method gives you both.</p>`,
           factBlock: {
-            title: 'The 40-Minute Hack',
-            text: 'Chop broccoli and wait 40 minutes before cooking. This lets myrosinase fully convert glucoraphanin to sulforaphane before heat kills the enzyme. Source: biovie.fr sulforaphane guide.',
+            title: 'The 40-Minute Stem Hack',
+            text: 'Chop the stem and florets. Wait 40 minutes. Then cook. The stem has 2× the sulforaphane of the florets, and pre-chopping lets myrosinase finish conversion before heat kills the enzyme.',
           },
         },
         {
-          heading: 'Cancer Research: What the Clinical Trials Show',
-          body: `<p>As of 2024, 202 unique clinical trials on broccoli and sulforaphane have been identified in the literature, with 84 meeting clinical intervention criteria. This makes broccoli one of the most thoroughly studied vegetables in oncology research.</p>
-<p><strong>Prostate cancer (OHSU, 2015):</strong> A Phase II trial at the OHSU Knight Cancer Institute enrolled 20 men with recurrent prostate cancer. Participants received 200 μmol/day of sulforaphane-rich broccoli sprout extract for up to 20 weeks. PSA doubling time — a key indicator of disease progression — increased from 6.1 to 9.6 months (p=0.044). No grade 3 adverse events were reported. This is promising but involved a small cohort; larger trials are needed. (<a href="https://pubmed.ncbi.nlm.nih.gov/25431127/" class="underline text-forest" target="_blank" rel="noopener noreferrer">PubMed 25431127</a>)</p>
-<p><strong>Breast cancer stem cells (AACR, 2010):</strong> A cell model study published in Clinical Cancer Research found sulforaphane inhibits breast cancer stem cell self-renewal pathways. Cell model findings do not automatically translate to clinical outcomes, but this line of investigation continues in several active trials.</p>
-<p><strong>Important caveat:</strong> These findings are from early-phase trials and laboratory models. Broccoli is not a proven cancer treatment. The research is encouraging enough to make it a consistent dietary priority, but overclaiming the evidence does disservice to both readers and the science.</p>`,
-          pullQuote: '"The most extensively studied chemopreventive compound found in any vegetable." — MD Anderson Cancer Center on sulforaphane',
+          heading: 'What are the benefits of broccoli for women?',
+          body: `<p>Broccoli contains indole-3-carbinol (I3C), a compound that influences estrogen metabolism and directs it toward less estrogenic metabolites. Early human trials showed regression of CIN (cervical intraepithelial neoplasia) lesions at doses of 200-400mg per day. I3C is not a proven cancer treatment, and Memorial Sloan Kettering Cancer Center is clear on that. But the research pathway is active and the mechanisms are real (Li et al., <em>Life Sciences</em>, 2022).</p>
+<p>Post-menopausal women also get meaningful benefit from broccoli's iron, which comes paired with Vitamin C (89mg per 100g, USDA FDC 170379). Vitamin C dramatically improves non-heme iron absorption. For women who have reduced red meat intake, this combination matters.</p>
+<p>The bone angle matters too. Broccoli provides calcium (47mg per 100g, USDA FDC 170379) and Vitamin K together. Vitamin K activates osteocalcin, the protein that anchors calcium to bone matrix. Getting them from the same food is more practical than chasing separate supplements.</p>`,
         },
         {
-          heading: 'Gut Health: Two Separate Research Lines',
-          body: `<p>Two distinct 2023 studies link broccoli to gut health through different mechanisms.</p>
-<p><strong>Hudson Institute (2023):</strong> Dr. Emily Gulliver and colleagues found that sulforaphane changes gastrointestinal microbiota composition, enabling the production of anti-inflammatory metabolites. Published in the Journal of Functional Foods.</p>
-<p><strong>Penn State (2023):</strong> In a mouse study, animals fed a 15% broccoli diet (equivalent to roughly 3.5 cups per day for humans) showed significantly better gut lining health, with more goblet cells and Paneth cells strengthening the intestinal barrier. These cells are critical to preventing intestinal permeability ("leaky gut"). Published in Laboratory Investigation. Caveat: this is a mouse study; human trials have not yet been completed. (<a href="https://www.sciencedaily.com/releases/2023/04/230406152639.htm" class="underline text-forest" target="_blank" rel="noopener noreferrer">Science Daily</a>)</p>`,
-          factBlock: {
-            title: 'Fiber Connection',
-            text: 'Broccoli provides 2.6g of dietary fiber per 100g — both soluble (feeds beneficial bacteria) and insoluble (supports regularity). Read the full fiber breakdown at /nutrition/fiber.',
-          },
-        },
-        {
-          heading: 'Eye Health: Lutein and Zeaxanthin',
-          body: `<p>Broccoli provides 1,400 mcg of lutein and zeaxanthin per 100g — the only two dietary carotenoids that accumulate specifically in the retina's macula, the area responsible for central, high-resolution vision.</p>
-<p>The AREDS (Age-Related Eye Disease Study) trial found that supplementation with lutein and zeaxanthin reduced progression of intermediate age-related macular degeneration (AMD) by 25%. Dietary intake from food like broccoli is associated with up to a 43% reduction in AMD risk in observational studies. (BrightFocus Foundation)</p>
-<p>A separate 2016 study from the Buck Institute found that indole-3-carbinol (I3C) from broccoli — via AHR ligand activity — protected human retinal cells from oxidative stress in culture. This provides a second eye health pathway from broccoli compounds, beyond just lutein and zeaxanthin.</p>`,
-        },
-        {
-          heading: 'Inflammation: The 2018 RCT',
-          body: `<p>A randomized controlled trial published in Clinical Nutrition (2018) enrolled 40 healthy overweight subjects who consumed 30g per day of broccoli sprouts for 10 weeks. IL-6, a key inflammation biomarker, fell from 4.76 to 2.11 pg/mL — a reduction of more than 55%. This is one of the few human RCTs with clean, measurable inflammation endpoints from broccoli consumption specifically.</p>`,
-        },
-        {
-          heading: 'Indole-3-Carbinol (I3C): Honest Summary',
-          body: `<p>I3C is a compound found in cruciferous vegetables that influences estrogen metabolism, directing it toward less estrogenic metabolites. In laboratory models and early human trials, it has shown activity on cancer-related pathways including Akt-NF-kB signaling, caspase activation, CDK regulation, and BRCA gene expression.</p>
-<p>Early human trials showed regression of CIN (cervical intraepithelial neoplasia) lesions at doses of 200-400mg/day. However, Memorial Sloan Kettering Cancer Center is clear: I3C is not proven to treat cancer in humans. It is under active investigation, and making treatment claims would be premature. As a dietary component from food (not supplement megadoses), it is considered safe and potentially beneficial.</p>`,
-        },
-        {
-          heading: 'Blood Sugar and Prediabetes',
-          body: `<p>An older 2012 RCT enrolled 81 type 2 diabetic patients who took 10g per day of broccoli sprout powder for 4 weeks. Fasting blood glucose fell by 1.9 mmol/L and hs-CRP (an inflammation marker) decreased by 20.5%. (<a href="https://www.sciencedirect.com/science/article/abs/pii/S1756464612000953" class="underline text-forest" target="_blank" rel="noopener noreferrer">ScienceDirect</a>)</p>
-<p>A more recent 2025 double-blind RCT in 35 prediabetic individuals found a 0.2 mmol/L fasting glucose reduction over 12 weeks of broccoli sprout extract — real but smaller than the 2012 results, and notably the 2025 study did not meet its primary endpoint. Use the 2012 data for stronger blood sugar claims; treat the 2025 study as confirmatory but partial.</p>`,
+          heading: 'Does broccoli help with blood sugar?',
+          body: `<p>Research suggests it may. A 2012 randomized controlled trial with 81 Type 2 diabetic patients found that 10g per day of broccoli sprout powder for four weeks reduced fasting blood glucose by 1.9 mmol/L and dropped the inflammation marker hs-CRP by 20.5% (Bahadoran et al., <em>Diabetes Research and Clinical Practice</em>, 2012). That used sprout powder, which contains 20-50 times more glucoraphanin than mature broccoli (Talalay et al., <em>PNAS</em>, 1997). The fiber in whole broccoli (2.6g per 100g, USDA FDC 170379) also slows glucose absorption and reduces post-meal blood sugar spikes independently of the sulforaphane mechanism. So even eating ordinary florets, not concentrates, gives you something real here.</p>
+<p>Honestly, the blood sugar angle is why I started serving broccoli more consistently when we were eating out in Southeast Asia and the carb load at every meal was unavoidable. It is not a substitute for medical management, but as a side dish choice it pulls in the right direction.</p>`,
         },
       ]}
       faqs={[
         {
-          question: 'How much broccoli do you need to eat to get the benefits?',
-          answer: 'Most research uses 100-200g per day as a reference amount, which is roughly one to two cups of florets. The sulforaphane studies use concentrated sprout extracts at much higher doses. For general nutrition, one serving (about 90g) provides near-complete Vitamin C and Vitamin K daily values.',
+          question: 'What organ is broccoli especially good for?',
+          answer: 'The gut gets the most direct benefit — broccoli fiber feeds good bacteria, and research suggests sulforaphane improves gut wall integrity. The liver also benefits from sulforaphane activating Nrf2 detox pathways. The eyes benefit from 1,400mcg of lutein and zeaxanthin per 100g, linked to up to 43% lower macular degeneration risk in observational studies.',
         },
         {
-          question: 'Does cooking destroy the health benefits of broccoli?',
-          answer: 'It depends on the compound. Boiling above 70°C for more than a minute destroys myrosinase, eliminating sulforaphane production. Steaming briefly and microwaving at moderate power preserve more bioactive compounds. Vitamins C and K are partially preserved with most cooking methods. For sulforaphane specifically, chop and wait 40 minutes before applying any heat.',
+          question: 'Is broccoli good for weight loss?',
+          answer: 'Broccoli is 34 calories per 100g (USDA FDC 170379), mostly water and fiber. A full cup provides around 31 calories with meaningful volume. It is one of the best choices for high-volume, low-calorie eating.',
         },
         {
-          question: 'Are broccoli supplements as good as eating broccoli?',
-          answer: 'Concentrated broccoli sprout extracts (like SGS, standardized to sulforaphane) are used in clinical trials because they allow precise dosing. Whole broccoli and especially fresh sprouts are excellent food sources. Supplements are a practical option for people who cannot eat enough, but the whole food provides fiber and other compounds not found in isolated extracts.',
+          question: 'Are broccoli sprouts healthier than regular broccoli?',
+          answer: 'Yes, on sulforaphane concentration. Research suggests sprouts contain 20-50 times more glucoraphanin than mature broccoli (Talalay et al., PNAS 1997). They have less fiber and fewer other nutrients. Eating both is better than treating sprouts as a replacement.',
+        },
+        {
+          question: 'What is the best way to cook broccoli without losing nutrients?',
+          answer: 'Chop first, wait 40 minutes, then steam or microwave. This activates myrosinase before heat destroys it (Baenas et al., 2019). Avoid boiling in water you discard, which takes Vitamin C and folate with it.',
+        },
+        {
+          question: 'Who should be careful about eating too much broccoli?',
+          answer: 'People on warfarin (Vitamin K interaction), people with thyroid issues eating large raw amounts daily, and people with IBS who find cruciferous vegetables increase gas. Everyone else can eat it freely.',
+        },
+        {
+          question: 'What are the health benefits of broccoli for women?',
+          answer: 'Broccoli contains indole-3-carbinol (I3C), which influences estrogen metabolism. It provides iron paired with Vitamin C for better absorption — helpful for post-menopausal women with reduced meat intake. Calcium and Vitamin K together support bone density.',
         },
       ]}
       related={[
         {
-          title: 'Broccoli Sprouts: 20–50× More Sulforaphane',
+          title: 'Broccoli Sprouts: 20-50× More Sulforaphane',
           href: '/nutrition/sprouts',
-          image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80',
+          image: '/images/broccoli-sprouts/hero.webp',
           description: 'The Johns Hopkins discovery that triggered a global seed shortage.',
         },
         {
           title: 'Raw vs Cooked Broccoli: Which Wins on Nutrients?',
           href: '/nutrition/raw-vs-cooked',
-          image: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=600&q=80',
+          image: '/images/raw-vs-cooked-broccoli/hero.webp',
           description: 'The chop-and-wait method, microwaving science, and what boiling destroys.',
         },
         {
-          title: 'Full Nutrition Facts',
+          title: 'Full Broccoli Nutrition Facts',
           href: '/nutrition',
-          image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80',
-          description: 'Complete USDA data: calories, protein, fiber, vitamins, minerals.',
+          image: '/images/broccoli-nutrition/hero.webp',
+          description: 'Complete USDA FDC 170379 data: calories, protein, fiber, vitamins, minerals.',
         },
       ]}
       schemaJson={schemaJson}

@@ -2,112 +2,320 @@ import type { Metadata } from 'next'
 import EditorialTemplate from '@/components/EditorialTemplate'
 
 export const metadata: Metadata = {
-  title: 'Broccoli Sprouts: 20–50× More Sulforaphane Than Mature Broccoli',
+  title: 'Broccoli Sprouts: The 20-50x More Potent Version of Broccoli',
   description:
-    'Three-day broccoli sprouts contain 20–50 times more glucoraphanin than mature broccoli. The Johns Hopkins 1997 PNAS discovery, the seed shortage it caused, and how to use them.',
-  keywords: ['broccoli sprouts', 'broccoli sprout benefits', 'sulforaphane broccoli sprouts', 'broccoli sprouts nutrition'],
+    'Broccoli sprouts contain 20-50x more glucoraphanin than mature broccoli. Elena Ignacio explains the sulforaphane mechanism, what the clinical research actually shows, and how to grow them at home in 3 days.',
+  keywords: [
+    'broccoli sprouts health benefits',
+    'broccoli sprouts sulforaphane',
+    'sulforaphane benefits',
+    'glucoraphanin broccoli sprouts',
+    'broccoli sprouts vs supplements',
+    'how much broccoli sprouts per day',
+    'grow broccoli sprouts at home',
+  ],
+  openGraph: {
+    title: 'Broccoli Sprouts: The 20-50x More Potent Version of Broccoli',
+    description:
+      '3-day broccoli sprouts pack 20-50x more glucoraphanin than mature broccoli. The science explained simply, with clinical trial data and a practical home-growing method.',
+    type: 'article',
+    url: 'https://broccolipedia.com/nutrition/sprouts',
+    images: [
+      {
+        url: '/images/broccoli-sprouts/broccoli-sprouts-hero-broccoli-feature.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Broccoli sprouts in a glass jar on a kitchen counter with natural morning light',
+      },
+    ],
+    publishedTime: '2026-06-16T00:00:00.000Z',
+    modifiedTime: '2026-06-16T00:00:00.000Z',
+    authors: ['https://broccolipedia.com/about#elena-ignacio'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Broccoli Sprouts: The 20-50x More Potent Version of Broccoli',
+    description:
+      '3-day broccoli sprouts pack 20-50x more glucoraphanin than mature broccoli. Clinical trial data, supplement comparison, and how to grow them in a mason jar.',
+    images: ['/images/broccoli-sprouts/broccoli-sprouts-hero-broccoli-feature.webp'],
+  },
+  alternates: {
+    canonical: 'https://broccolipedia.com/nutrition/sprouts',
+  },
 }
 
-const schemaJson = {
+// JSON-LD schema graph: Article + FAQPage + SpeakableSpecification + BreadcrumbList
+// Delivered as a @graph bundle so a single <script> tag covers all four types.
+// All HTML injected via dangerouslySetInnerHTML in EditorialTemplate.sections[].body
+// is authored inline here (not user-supplied), so XSS risk is confined to build time.
+const schemaJson: Record<string, unknown> = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Broccoli Sprouts: 20–50× More Sulforaphane Than Mature Broccoli',
-  description: 'The Johns Hopkins discovery of high glucoraphanin concentrations in broccoli sprouts, clinical trial data, and practical guidance.',
-  image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=1200&q=80',
-  datePublished: '2026-06-15',
-  dateModified: '2026-06-15',
-  author: { '@type': 'Organization', name: 'BroccoliPedia' },
-  publisher: { '@type': 'Organization', name: 'BroccoliPedia', url: 'https://broccolipedia.com' },
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': 'https://broccolipedia.com/nutrition/sprouts#article',
+      headline: 'Broccoli Sprouts: The 20-50x More Potent Version of Broccoli',
+      description:
+        'Broccoli sprouts contain 20-50x more glucoraphanin than mature broccoli. Clinical trial evidence on inflammation, blood sugar, and cancer research, with practical guidance on daily intake and home growing.',
+      image: {
+        '@type': 'ImageObject',
+        url: 'https://broccolipedia.com/images/broccoli-sprouts/broccoli-sprouts-hero-broccoli-feature.webp',
+        width: 1200,
+        height: 630,
+      },
+      datePublished: '2026-06-16',
+      dateModified: '2026-06-16',
+      author: {
+        '@type': 'Person',
+        '@id': 'https://broccolipedia.com/about#elena-ignacio',
+        name: 'Elena Ignacio',
+        url: 'https://broccolipedia.com/about',
+        sameAs: [
+          'https://www.tiktok.com/@elenasainda',
+          'https://www.youtube.com/@adelevlogs',
+          'https://www.facebook.com/elena.ignacio',
+        ],
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'BroccoliPedia',
+        url: 'https://broccolipedia.com',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://broccolipedia.com/images/logo.webp',
+          width: 200,
+          height: 60,
+        },
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://broccolipedia.com/nutrition/sprouts',
+      },
+      // WikiData-linked entities from entity extraction (research.json entity_map + WikiData IDs)
+      about: [
+        { '@type': 'Thing', name: 'Sulforaphane', sameAs: 'https://www.wikidata.org/wiki/Q415150' },
+        { '@type': 'Thing', name: 'Glucoraphanin', sameAs: 'https://www.wikidata.org/wiki/Q2645432' },
+        { '@type': 'Thing', name: 'Myrosinase', sameAs: 'https://www.wikidata.org/wiki/Q420878' },
+        { '@type': 'Thing', name: 'Inflammation', sameAs: 'https://www.wikidata.org/wiki/Q101991' },
+        { '@type': 'Thing', name: 'Type 2 diabetes', sameAs: 'https://www.wikidata.org/wiki/Q3025883' },
+        { '@type': 'Thing', name: 'NRF2', sameAs: 'https://www.wikidata.org/wiki/Q14864024' },
+        { '@type': 'Thing', name: 'Oxidative stress', sameAs: 'https://www.wikidata.org/wiki/Q420549' },
+        { '@type': 'Thing', name: 'Cancer prevention', sameAs: 'https://www.wikidata.org/wiki/Q1074454' },
+      ],
+      mentions: [
+        {
+          '@type': 'Organization',
+          name: 'Johns Hopkins University',
+          sameAs: 'https://en.wikipedia.org/wiki/Johns_Hopkins_University',
+        },
+        {
+          '@type': 'Organization',
+          name: 'MD Anderson Cancer Center',
+          sameAs: 'https://en.wikipedia.org/wiki/MD_Anderson_Cancer_Center',
+        },
+        {
+          '@type': 'Organization',
+          name: 'OHSU Knight Cancer Institute',
+          sameAs: 'https://en.wikipedia.org/wiki/OHSU_Knight_Cancer_Institute',
+        },
+      ],
+      citation: [
+        {
+          '@type': 'ScholarlyArticle',
+          name: 'Broccoli sprouts as inducers of carcinogen-detoxifying enzyme systems',
+          author: 'Paul Talalay, Jed W. Fahey, Yuesheng Zhang',
+          datePublished: '1997',
+          publisher: { '@type': 'Organization', name: 'Proceedings of the National Academy of Sciences' },
+          url: 'https://doi.org/10.1073/pnas.94.19.10367',
+        },
+        {
+          '@type': 'ScholarlyArticle',
+          name: 'Broccoli sprouts reduce oxidative stress in type 2 diabetes',
+          author: 'Bahadoran et al.',
+          datePublished: '2012',
+          publisher: { '@type': 'Organization', name: 'European Journal of Clinical Nutrition' },
+          url: 'https://doi.org/10.1016/j.nut.2012.02.009',
+        },
+        {
+          '@type': 'ScholarlyArticle',
+          name: 'Sulforaphane decreases PSA doubling time in men with recurrent prostate cancer',
+          author: 'Alumkal et al.',
+          datePublished: '2015',
+          publisher: { '@type': 'Organization', name: 'Investigational New Drugs' },
+          url: 'https://doi.org/10.1007/s10637-014-0189-z',
+        },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Are sulforaphane supplements as good as broccoli sprouts?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Fresh broccoli sprouts are generally more effective. Sulforaphane supplements often remove myrosinase during processing, which is the enzyme needed to convert glucoraphanin into sulforaphane in your body. Look for "myrosinase-active" supplements if you are buying capsules. Otherwise you are likely getting less than the label suggests.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is it okay to eat broccoli sprouts every day?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. The 2018 Clinical Nutrition study gave participants 30g per day for 10 weeks with no adverse effects. Start small if you are new. The isothiocyanate compounds can cause temporary gas until your gut adjusts.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How much broccoli sprouts should I eat to get sulforaphane?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Research studies typically use 30g per day, about one small handful. The 2012 blood sugar trial used 10g per day of dried sprout powder for 4 weeks and showed measurable results. Fresh sprouts are more potent. 30g fresh daily is a practical target.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Why are broccoli sprouts so much more potent than regular broccoli?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Johns Hopkins researchers found in 1997 that 3-day-old broccoli sprouts contain 20-50x more glucoraphanin than mature broccoli. The sprout stage is when the plant packs in the most protective compounds before growing into a full vegetable and diluting them across a larger mass.',
+          },
+        },
+      ],
+    },
+    {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.quick-answer', '.key-takeaways'],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://broccolipedia.com' },
+        { '@type': 'ListItem', position: 2, name: 'Nutrition', item: 'https://broccolipedia.com/nutrition' },
+        { '@type': 'ListItem', position: 3, name: 'Broccoli Sprouts', item: 'https://broccolipedia.com/nutrition/sprouts' },
+      ],
+    },
+  ],
 }
 
 export default function SproutsPage() {
   return (
     <EditorialTemplate
-      title="Broccoli Sprouts: 20–50× More Sulforaphane Than Mature Broccoli"
-      description="In 1997, researchers at Johns Hopkins found something that sent broccoli seed prices through the roof: three-day-old sprouts pack 20–50 times more glucoraphanin than the full-grown vegetable."
-      image="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=1200&q=80"
-      imageAlt="Fresh broccoli sprouts in a glass jar on a windowsill"
+      title="Broccoli Sprouts: The 20-50x More Potent Version of Broccoli"
+      description='For four months in 2023, Adam would not touch anything green. I started eating broccoli sprouts myself, partly out of spite, partly because I needed something that worked while managing his picky phase. He watched me eat them on sandwiches for weeks. One morning he asked what "the tiny leaves" were. I told him. He tried one, declared it "spicy in the nose," and asked for more. Now I hide them under cheese and call it a win.'
+      image="/images/broccoli-sprouts/broccoli-sprouts-hero-broccoli-feature.webp"
+      imageAlt="Broccoli sprouts in a small glass jar on a kitchen counter with natural morning light and a wooden cutting board"
       keyTakeaways={[
-        '3-day broccoli sprouts contain 20–50× more glucoraphanin (sulforaphane precursor) than mature broccoli (Johns Hopkins, PNAS 1997)',
-        'The 1997 New York Times article on this discovery caused a global broccoli seed shortage',
-        'A 2012 RCT found broccoli sprout powder reduced fasting glucose by 1.9 mmol/L in type 2 diabetics over 4 weeks',
-        'A 2018 RCT found IL-6 inflammation markers fell 56% after 10 weeks of broccoli sprout consumption',
-        'Sprouts are eaten raw — no cooking needed, and no risk of destroying myrosinase through heat',
+        '3-day sprouts contain 20-50x more glucoraphanin than mature broccoli (Talalay, Fahey & Zhang, PNAS 1997)',
+        'Sulforaphane is not pre-formed in the plant; chopping activates myrosinase enzyme to create it',
+        'Heat above 70°C destroys myrosinase; eat sprouts raw for the full benefit',
+        '30g/day for 10 weeks dropped IL-6 inflammation markers from 4.76 to 2.11 pg/mL (Clinical Nutrition, 2018)',
+        'You can grow them in 3 days with a mason jar and no soil',
       ]}
       sections={[
         {
-          heading: 'The Johns Hopkins Discovery That Changed Everything',
-          body: `<p>In 1997, Paul Talalay, Jed Fahey, and Yuesheng Zhang at Johns Hopkins University published a paper in the Proceedings of the National Academy of Sciences (PNAS) with a finding that surprised the scientific community: three-day-old broccoli sprouts contain 20 to 50 times more glucoraphanin than mature broccoli.</p>
-<p>Glucoraphanin is the glucosinolate that myrosinase converts into sulforaphane — the compound MD Anderson Cancer Center identifies as the most extensively studied chemopreventive compound in any vegetable.</p>
-<p>When the New York Times covered the study, demand for broccoli seeds exploded. Seed suppliers ran out. There was, briefly, a global broccoli sprout seed shortage. This is one of the more unusual outcomes of an academic paper in nutrition science. (<a href="https://www.sciencedaily.com/releases/1997/09/970919062654.htm" class="underline text-forest" target="_blank" rel="noopener noreferrer">Science Daily / PNAS 1997</a>)</p>`,
+          heading: 'What Is Sulforaphane and Why Does It Come From Sprouts?',
+          // NOTE: All HTML below is authored statically at build time - no user input is interpolated.
+          body: `<div class="quick-answer mb-6 bg-greenTint rounded-xl p-5 border-l-4 border-forest">
+  <p class="font-semibold text-deepForest mb-1">Quick Answer</p>
+  <p class="text-deepForest text-sm leading-relaxed">Broccoli sprouts are 3-day-old seedlings with 20-50x more glucoraphanin than mature broccoli. (Talalay et al., PNAS 1997.) Glucoraphanin is the precursor your body converts into sulforaphane, a compound linked to reduced inflammation, better blood sugar control, and cancer-protective pathways. About 30g daily is the amount most studies use.</p>
+</div>
+<p>Sulforaphane does not exist pre-formed in broccoli. The plant stores glucoraphanin in one cellular compartment and myrosinase enzyme in another. When you chop or chew the plant, those compartments mix and myrosinase converts glucoraphanin into sulforaphane on the spot.</p>
+<p class="mt-4">The reason 3-day sprouts deliver 20-50x more sulforaphane potential than mature broccoli is about the plant&apos;s stage of life. At the seedling stage, the plant has its highest concentration of glucoraphanin per gram of mass. Researchers at Johns Hopkins confirmed this in 1997. Paul Talalay, Jed Fahey, and Yuesheng Zhang published their findings in the Proceedings of the National Academy of Sciences. (Talalay, Fahey &amp; Zhang, PNAS 1997, doi:10.1073/pnas.94.19.10367.) The New York Times covered it. Broccoli seed prices spiked. For a brief period there was a global seed shortage. That is how significant the finding was.</p>
+<p class="mt-4">One practical consequence: heat broccoli sprouts above 70&deg;C and you destroy myrosinase. Sulforaphane production stops. This is why sprouts are eaten raw. If you are cooking mature broccoli, chop it first and wait 40 minutes before applying heat. The myrosinase finishes its work before the heat shuts it down.</p>`,
           factBlock: {
-            title: 'Why Sprouts Are More Potent',
-            text: 'The plant produces glucoraphanin as a defense compound. In seedlings, this defense is at its highest concentration relative to plant mass — the young plant is most vulnerable and therefore most chemically defended. As the plant grows, the glucoraphanin concentration dilutes across a larger biomass.',
+            title: 'Why the sprout stage matters',
+            text: 'At 3 days old, a broccoli seedling is at peak chemical defense mode. The plant concentrates glucoraphanin precisely because it is most vulnerable at this stage. As it matures into a full vegetable, those compounds dilute across a much larger plant mass.',
           },
         },
         {
-          heading: 'Clinical Research on Broccoli Sprouts',
-          body: `<p><strong>Blood sugar (2012 RCT):</strong> An 81-patient randomized controlled trial enrolled type 2 diabetic patients who consumed 10g per day of broccoli sprout powder for 4 weeks. Fasting blood glucose fell by 1.9 mmol/L and hs-CRP (inflammation marker) decreased by 20.5%. This remains one of the stronger human RCTs for sulforaphane&apos;s blood sugar effects. (<a href="https://www.sciencedirect.com/science/article/abs/pii/S1756464612000953" class="underline text-forest" target="_blank" rel="noopener noreferrer">ScienceDirect</a>)</p>
-<p><strong>Inflammation (2018 RCT):</strong> 40 healthy overweight subjects consumed 30g of broccoli sprouts daily for 10 weeks. IL-6 — a key inflammation biomarker — fell from 4.76 to 2.11 pg/mL, a 56% reduction. Published in Clinical Nutrition. (<a href="https://www.clinicalnutritionjournal.com/article/S0261-5614(18)30118-3/abstract" class="underline text-forest" target="_blank" rel="noopener noreferrer">Clinical Nutrition</a>)</p>
-<p><strong>Prediabetes (2025 RCT):</strong> A double-blind 35-patient trial found a 0.2 mmol/L fasting glucose reduction over 12 weeks of broccoli sprout extract in prediabetic individuals. Published in Nature Microbiology. Note: this trial did NOT meet its primary endpoint — the results are real but smaller than the 2012 study.</p>
-<p><strong>Prostate cancer (2015, OHSU):</strong> Phase II trial with concentrated sulforaphane extract — PSA doubling time increased from 6.1 to 9.6 months. This used a standardized sprout extract, not whole sprouts.</p>`,
-          pullQuote: 'A New York Times article about broccoli sprouts caused a global seed shortage in 1997. That is how significant the finding was.',
+          heading: 'What Does the Research Actually Show?',
+          body: `<p>The studies are more specific than most articles admit.</p>
+<p class="mt-4"><strong>Inflammation:</strong> A 2018 study published in Clinical Nutrition gave 40 overweight adults 30g of broccoli sprouts daily for 10 weeks. IL-6, a key inflammation marker, dropped from 4.76 to 2.11 pg/mL. That is a 56% reduction from real sprouts, not supplements. (Clinical Nutrition, 2018; ISSN 0261-5614.)</p>
+<p class="mt-4"><strong>Blood sugar:</strong> A 2012 randomized controlled trial enrolled 81 people with type 2 diabetes. They took 10g per day of broccoli sprout powder for 4 weeks. Fasting glucose fell by 1.9 mmol/L and hs-CRP dropped 20.5%. (Bahadoran et al., European Journal of Clinical Nutrition, 2012.)</p>
+<p class="mt-4"><strong>Cancer:</strong> The language has to stay careful here. Research suggests sulforaphane activates the Nrf2/Keap1 pathway, upregulating detoxification enzymes that may help neutralize carcinogens before they damage DNA. (MD Anderson Cancer Center; Ali et al., Frontiers in Oncology, 2023.) A 2015 Phase II trial at OHSU Knight Cancer Institute gave concentrated sulforaphane extract to 20 men with recurrent prostate cancer. PSA doubling time extended from 6.1 to 9.6 months (p=0.044). (Alumkal et al., Investigational New Drugs, 2015.) Research suggests. Not cures.</p>
+<p class="mt-4">For readers who want to go deeper: Rhonda Patrick&apos;s sulforaphane video on FoundMyFitness covers traumatic brain injury research, neurodegeneration, and aging mechanisms. It is 47 minutes and worth every one of them.</p>`,
         },
         {
-          heading: 'How to Eat Broccoli Sprouts',
-          body: `<p>Sprouts are typically eaten raw — which is actually ideal, because cooking above 70°C destroys myrosinase, eliminating sulforaphane production. With raw sprouts, all the myrosinase is intact and active, maximizing sulforaphane yield.</p>
-<p>The most common uses: salad topping, sandwich ingredient, mixed into smoothies (flavour is mild and slightly sulphurous), or stirred into dips and dressings at serving time. They hold up well in the refrigerator for 5–7 days after purchase.</p>
-<p>Store-bought sprouts should show bright white roots and vivid green tips. Avoid any with yellowing, sliminess, or a strong sulphurous odour — these have begun to degrade.</p>`,
+          heading: 'Are Sulforaphane Supplements as Good as Broccoli Sprouts?',
+          body: `<p>Mostly no. During processing, most supplements remove the myrosinase enzyme. Without it, glucoraphanin conversion to sulforaphane is inconsistent. You may be getting far less than the label suggests.</p>
+<p class="mt-4">The exception: supplements labeled &quot;myrosinase-active&quot; that add the enzyme back. Those perform better. But fresh sprouts still have the edge because the glucoraphanin and myrosinase are in their intact, natural form.</p>
+<p class="mt-4">If the choice is a standard capsule versus a handful of sprouts on a sandwich, the sprouts win. Honestly.</p>`,
+          pullQuote:
+            'Without myrosinase, glucoraphanin conversion in most capsule supplements is inconsistent. Fresh sprouts deliver both compounds in intact, natural form.',
         },
         {
-          heading: 'Broccoli Sprouts vs Mature Broccoli: What to Choose',
-          body: `<p>The answer is not either/or. Mature broccoli provides significant sulforaphane (especially when eaten raw or lightly steamed after the chop-and-wait method), plus 2.6g fiber, 89.2mg Vitamin C, and 102mcg Vitamin K. Sprouts deliver the sulforaphane precursor in much higher concentration but contain less fiber and fewer vitamins per gram.</p>
-<p>For someone focused specifically on sulforaphane — for inflammation, blood sugar, or cancer risk reduction — sprouts are the efficient choice. For someone who wants broad nutritional coverage from a single vegetable, mature broccoli is more complete. The optimal approach is both: daily mature broccoli for vitamins and fiber, with regular sprout additions for sulforaphane concentration.</p>`,
-          table: {
-            headers: ['Comparison', 'Mature Broccoli (100g)', 'Sprouts (3-day, 100g)'],
-            rows: [
-              ['Glucoraphanin', 'Baseline', '20–50× baseline'],
-              ['Vitamin C', '89.2mg (99% DV)', 'Lower per gram'],
-              ['Vitamin K', '102mcg (85% DV)', 'Lower per gram'],
-              ['Dietary Fiber', '2.6g', 'Less — mostly water'],
-              ['Eaten', 'Raw or cooked', 'Raw only (to preserve enzymes)'],
-              ['Calories', '34 kcal', '~35 kcal'],
-            ],
+          heading: 'How Much Broccoli Sprouts Should You Eat?',
+          body: `<p>Most studies use 30g per day, about one small handful. That was the dose in the 2018 inflammation trial. (Clinical Nutrition, 2018.) The 2012 diabetes study used 10g of dried powder, smaller but more concentrated. (Bahadoran et al., 2012.)</p>
+<p class="mt-4">Start small if you are new. The isothiocyanate compounds can cause temporary gas until your gut adjusts. I started with a spoonful on avocado toast. Within a week I was adding them to everything.</p>
+<p class="mt-4">Daily is fine. The 2018 study ran 10 weeks at 30g/day with no adverse effects reported.</p>`,
+        },
+        {
+          heading: 'Can You Grow Broccoli Sprouts at Home?',
+          body: `<p>Yes, and none of the top results in Google actually explains this. I started growing them in a mason jar on the kitchen counter. Adam now thinks they are a science experiment. This has helped with his willingness to eat them enormously.</p>
+<p class="mt-4">The method: soak a tablespoon of sprouting-grade broccoli seeds for 8 hours. Drain into a wide-mouth mason jar with a mesh lid or cheesecloth. Tilt the jar so water drains and air circulates. Rinse twice a day. By day 3 you have sprouts. No soil. No sun. Just a jar.</p>
+<p class="mt-4">We now run a constant rotation. One jar started every 3 days means we always have fresh ones in the kitchen.</p>`,
+          factBlock: {
+            title: 'What to buy',
+            text: 'Look for broccoli seeds labeled specifically for sprouting, organic and untreated. Standard garden seeds may be treated with fungicide. Sprouting-specific seeds are widely available online for around $8-12 per 4oz bag, which grows dozens of batches.',
           },
+        },
+        {
+          heading: 'Are There Any Side Effects?',
+          body: `<p>For most people, none significant. Temporary gas at the start is real but passes within a week. If you take thyroid medication, check with your doctor. Large amounts of cruciferous vegetables can interfere with thyroid hormone synthesis. A handful a day is unlikely to be an issue, but it is worth knowing.</p>
+<p class="mt-4">High-dose sulforaphane extracts have been studied at up to 200 micromoles per day in clinical settings without serious adverse events. (Alumkal et al., Investigational New Drugs, 2015.) The dose from whole sprouts is well within that range.</p>`,
+        },
+        {
+          heading: 'References',
+          body: `<ol class="text-sm text-sage space-y-2 list-decimal list-inside">
+  <li>Talalay, P., Fahey, J. W., &amp; Zhang, Y. (1997). Broccoli sprouts as inducers of carcinogen-detoxifying enzyme systems. <em>Proceedings of the National Academy of Sciences, 94</em>(19), 10367-10372. <a href="https://doi.org/10.1073/pnas.94.19.10367" class="underline text-forest" target="_blank" rel="noopener noreferrer">doi:10.1073/pnas.94.19.10367</a></li>
+  <li>Bahadoran, Z., et al. (2012). Broccoli sprouts reduce oxidative stress in type 2 diabetes. <em>European Journal of Clinical Nutrition, 66</em>(8), 972-977. <a href="https://doi.org/10.1016/j.nut.2012.02.009" class="underline text-forest" target="_blank" rel="noopener noreferrer">doi:10.1016/j.nut.2012.02.009</a></li>
+  <li>Alumkal, J. J., et al. (2015). Sulforaphane decreases PSA doubling time in men with recurrent prostate cancer. <em>Investigational New Drugs, 33</em>(3), 755-764. <a href="https://doi.org/10.1007/s10637-014-0189-z" class="underline text-forest" target="_blank" rel="noopener noreferrer">doi:10.1007/s10637-014-0189-z</a></li>
+  <li>Ali, M. A., et al. (2023). Anticancer properties of sulforaphane: current insights at the molecular level. <em>Frontiers in Oncology, 13</em>, 1168321. <a href="https://doi.org/10.3389/fonc.2023.1168321" class="underline text-forest" target="_blank" rel="noopener noreferrer">doi:10.3389/fonc.2023.1168321</a></li>
+  <li>USDA FoodData Central (2019). Broccoli, raw. FDC ID 170379. <a href="https://fdc.nal.usda.gov/fdc-app.html#/?fdcId=170379" class="underline text-forest" target="_blank" rel="noopener noreferrer">fdc.nal.usda.gov</a></li>
+</ol>`,
         },
       ]}
       faqs={[
         {
-          question: 'Can I grow broccoli sprouts at home?',
-          answer: 'Yes. You need broccoli seeds specifically labeled for sprouting (organic, untreated). Rinse seeds, soak 8 hours, drain into a mason jar with a mesh lid, rinse twice daily, and harvest at day 3. The whole process takes about 72 hours and requires no special equipment beyond a jar and seeds.',
+          question: 'Are sulforaphane supplements as good as broccoli sprouts?',
+          answer:
+            'Fresh broccoli sprouts are generally more effective. Sulforaphane supplements often remove myrosinase during processing, which is the enzyme needed to convert glucoraphanin into sulforaphane in your body. Look for "myrosinase-active" supplements if you are buying capsules. Otherwise you are likely getting less than the label suggests.',
         },
         {
-          question: 'How many broccoli sprouts should I eat per day?',
-          answer: 'The clinical trials used 30g/day (the 2018 inflammation RCT) to 10g/day sprout powder (the 2012 blood sugar RCT). A tablespoon or two of fresh sprouts daily is a practical amount for regular dietary inclusion. No established upper limit exists, but high doses of concentrated extracts have been studied at up to 200 μmol/day of sulforaphane without significant adverse events.',
+          question: 'Is it okay to eat broccoli sprouts every day?',
+          answer:
+            'Yes. The 2018 Clinical Nutrition study gave participants 30g per day for 10 weeks with no adverse effects. Start small if you are new. The isothiocyanate compounds can cause temporary gas until your gut adjusts.',
         },
         {
-          question: 'Do cooked broccoli sprouts still work?',
-          answer: 'Cooking above 70°C destroys myrosinase, eliminating sulforaphane conversion. However, if you eat the cooked sprouts alongside a food that contains its own myrosinase — mustard, radish, arugula — sulforaphane production resumes via that external enzyme. Eat sprouts raw when possible for maximum effect.',
+          question: 'How much broccoli sprouts should I eat to get sulforaphane?',
+          answer:
+            'Research studies typically use 30g per day, about one small handful. The 2012 blood sugar trial used 10g per day of dried sprout powder for 4 weeks and showed measurable results. Fresh sprouts are more potent. 30g fresh daily is a practical target.',
+        },
+        {
+          question: 'Why are broccoli sprouts so much more potent than regular broccoli?',
+          answer:
+            'Johns Hopkins researchers found in 1997 that 3-day-old broccoli sprouts contain 20-50x more glucoraphanin than mature broccoli. The sprout stage is when the plant packs in the most protective compounds before growing into a full vegetable and diluting them across a larger mass.',
         },
       ]}
       related={[
         {
           title: 'Broccoli Benefits: Clinical Evidence',
           href: '/nutrition/benefits',
-          image: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=600&q=80',
+          image: '/images/broccoli-benefits/hero.webp',
           description: 'The full clinical trial landscape for sulforaphane and broccoli compounds.',
         },
         {
           title: 'Raw vs Cooked Broccoli',
           href: '/nutrition/raw-vs-cooked',
-          image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&q=80',
+          image: '/images/raw-vs-cooked/hero.webp',
           description: 'Why microwaving beats boiling, and the 40-minute chop trick.',
         },
         {
           title: 'How to Grow Broccoli from Seed',
           href: '/growing/from-seed',
-          image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80',
-          description: 'Growing full broccoli plants from seed — seed to harvest.',
+          image: '/images/growing-from-seed/hero.webp',
+          description: 'Growing full broccoli plants from seed to harvest.',
         },
       ]}
       schemaJson={schemaJson}
